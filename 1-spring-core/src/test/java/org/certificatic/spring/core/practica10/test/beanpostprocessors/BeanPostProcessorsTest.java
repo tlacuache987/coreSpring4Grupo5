@@ -1,6 +1,6 @@
 package org.certificatic.spring.core.practica10.test.beanpostprocessors;
 
-import org.certificatic.spring.core.practica10.beanpostprocessors.bean.Worker;
+import org.certificatic.spring.core.practica10.beanpostprocessors.bean.IWorker;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +25,9 @@ public class BeanPostProcessorsTest {
 
 		log.info("beanPostProcessorsTest -------------------");
 
-		Worker worker = applicationContext.getBean(Worker.class);
+		IWorker worker = applicationContext.getBean(IWorker.class);
+		
+		worker.showInfo();
 
 		Assert.assertNotNull(worker);
 

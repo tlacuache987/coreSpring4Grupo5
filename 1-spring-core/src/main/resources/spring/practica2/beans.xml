@@ -4,7 +4,13 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- define bean holaMundoBean -->
+	<bean id="holaMundoBean" class="org.certificatic.spring.core.practica2.bean.HolaMundo">
+		<property name="mensaje" value="Hola Mundo Spring" />
+	</bean>
 
 	<!-- define bean holaMundoBean2 -->
+	<bean id="holaMundoBean2" class="org.certificatic.spring.core.practica2.bean.HolaMundo">
+		<constructor-arg value="Hola Mundo Spring desde CertificaTIC xD" />
+	</bean>
 
 </beans>

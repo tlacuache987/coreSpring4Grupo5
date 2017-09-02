@@ -12,14 +12,20 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class HolaMundoSpringTest2 {
 
-
 	@Test
 	public void holaMundoSpringTest2() {
 		log.info("holaMundoSpringTest2 -------------------------");
-		
+
 		String ruta = "spring/practica2/beans.xml";
-		
+
 		// Implementar IoC con ApplicationContext
+		ApplicationContext context = new ClassPathXmlApplicationContext(ruta);
+
+		HolaMundo holaMundo = (HolaMundo) context.getBean("holaMundoBean2");
+
+		Assert.assertNotNull(holaMundo.getMensaje());
+
+		log.info("holaMundo: {}", holaMundo);
 
 	}
 }

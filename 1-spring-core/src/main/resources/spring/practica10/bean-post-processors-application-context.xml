@@ -4,11 +4,21 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- Define bean workerBean -->
+	<bean init-method="init" destroy-method="destroy" scope="singleton" 
+		class="org.certificatic.spring.core.practica10.beanpostprocessors.bean.Worker">
+		
+		<property name="name" value="Ilse Hernandez"></property>
+		<property name="age" value="28"></property>
+		
+	</bean>
 
 	<!-- Define bean clase BeanPostProcessor1 -->
+	<bean class="org.certificatic.spring.core.practica10.beanpostprocessors.bpp.BeanPostProcessor1" />
 
 	<!-- Define bean clase BeanPostProcessor2 -->
+	<bean class="org.certificatic.spring.core.practica10.beanpostprocessors.bpp.BeanPostProcessor2" />
 
 	<!-- Define bean clase BeanPostProcessor3 -->
+	<bean class="org.certificatic.spring.core.practica10.beanpostprocessors.bpp.BeanPostProcessor3" />
 
 </beans>

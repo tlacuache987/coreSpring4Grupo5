@@ -4,9 +4,29 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- Define connectionBeanTemplate -->
+	<bean id="connectionBeanTemplate" abstract="true" scope="singleton"
+		init-method="connect" destroy-method="disconnect">
+
+		<property name="database" value="produccionDB001" />
+		<property name="user" value="pepitoRoot_Admin2" />
+		<property name="password" value="WEF#WDfsd.789871234EWR" />
+
+	</bean>
 
 	<!-- Define connectionProdBean -->
+	<bean id="connectionProdBean" 
+		class="org.certificatic.spring.core.practica9.beandefinitioninheritance.bean.ConnectionDataBase"
+		parent="connectionBeanTemplate">
+	</bean>
 
 	<!-- Define connectionTestBean -->
+	<bean id="connectionTestBean"
+		class="org.certificatic.spring.core.practica9.beandefinitioninheritance.bean.ConnectionDataBase"
+		parent="connectionBeanTemplate">
+
+		<property name="database" value="testDB001" />
+		<property name="debugMode" value="true" />
+
+	</bean>
 
 </beans>
