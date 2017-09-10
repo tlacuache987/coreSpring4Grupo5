@@ -5,12 +5,32 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- Habilita configuración por anotaciones -->
+	<context:annotation-config />
 
 	<!-- Define bean Student -->
+	<bean class="org.certificatic.spring.core.practica16.jsr250.bean.Student" />
 
 	<!-- Define bean Subject (mathematics) -->
+	<bean id="mathematics"
+		class="org.certificatic.spring.core.practica16.jsr250.bean.Subject">
+
+		<property name="name" value="Math I" />
+		<property name="credits">
+			<value>18</value>
+		</property>
+
+	</bean>
 
 	<!-- Define bean Subject (subject) -->
+	<bean id="subject"
+		class="org.certificatic.spring.core.practica16.jsr250.bean.Subject">
+
+		<property name="name" value="Algebra II" />
+		<property name="credits">
+			<value>12</value>
+		</property>
+
+	</bean>
 
 	<bean id="name" class="java.lang.String">
 		<constructor-arg>
