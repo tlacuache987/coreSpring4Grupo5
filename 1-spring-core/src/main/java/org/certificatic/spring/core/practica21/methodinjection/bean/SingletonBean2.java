@@ -1,9 +1,9 @@
 package org.certificatic.spring.core.practica21.methodinjection.bean;
 
 import org.certificatic.spring.core.practica21.methodinjection.bean.api.IProcessor;
+import org.springframework.beans.factory.ObjectFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 import lombok.Setter;
@@ -11,9 +11,10 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
-public class SingletonBean implements ApplicationContextAware {
+public class SingletonBean2 {
 
-	private @Setter ApplicationContext applicationContext;
+	@Autowired
+	private ObjectFactory<IProcessor> processorFactory;
 
 	@Value("#{ 1 + 2 }")
 	private @Setter Integer iterations;
@@ -28,7 +29,7 @@ public class SingletonBean implements ApplicationContextAware {
 	}
 
 	public IProcessor getProcessor() {
-		return this.applicationContext.getBean(IProcessor.class);
+		return processorFactory.getObject();
 	}
 
 }
