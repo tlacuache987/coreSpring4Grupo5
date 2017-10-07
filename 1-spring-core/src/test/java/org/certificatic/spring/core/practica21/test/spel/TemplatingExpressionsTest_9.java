@@ -36,14 +36,14 @@ public class TemplatingExpressionsTest_9 {
 
 		log.info("templatingExpressionsTest -------------------");
 
-		springContext.setVariable("name", "Ivan García");
+		springContext.setVariable("name", "Ivan GarcÃ­a");
 
 		String greeting = spelParser.parseExpression("Hi #{ #name +' '+'you''re' } awesome!", new TemplateParserContext())
-				.getValue(springContext,String.class); // sólo analiza
+				.getValue(springContext, String.class); // sÃ³lo analiza
 
 		Assert.assertNotNull(greeting);
 		
-		Assert.assertEquals("Hi Ivan García you're awesome!", greeting);
+		Assert.assertEquals("Hi Ivan GarcÃ­a you're awesome!", greeting);
 		
 		log.info("greeting: {}", greeting);
 	}
@@ -53,14 +53,14 @@ public class TemplatingExpressionsTest_9 {
 
 		log.info("templatingExpressionsTest2 -------------------");
 
-		springContext.setVariable("name", "Ivan García");
+		springContext.setVariable("name", "Ivan GarcÃ­a");
 
 		String greeting = spelParser.parseExpression("Hi %[[ #name +' '+'you''re' ]] awesome!", new TemplateParserContext("%[[","]]"))
-				.getValue(springContext,String.class); // sólo analiza
+				.getValue(springContext,String.class); // sï¿½lo analiza
 
 		Assert.assertNotNull(greeting);
 		
-		Assert.assertEquals("Hi Ivan García you're awesome!", greeting);
+		Assert.assertEquals("Hi Ivan GarcÃ­a you're awesome!", greeting);
 		
 		log.info("greeting: {}", greeting);
 	}

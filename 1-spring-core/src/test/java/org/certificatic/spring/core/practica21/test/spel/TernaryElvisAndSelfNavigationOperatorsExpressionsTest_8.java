@@ -42,9 +42,10 @@ public class TernaryElvisAndSelfNavigationOperatorsExpressionsTest_8 {
 
 		springContext.setVariable("random", new Random());
 
-		// define una expresión con operador ternario que devuelva un string u otro dependiendo si el 'nextInt' del objeto random
+		// define una expresiï¿½n con operador ternario que devuelva un string u otro dependiendo si el 'nextInt' del objeto random
 		// es par o impar.
-		String greeting = spelParser.parseExpression(null).getValue(springContext, String.class);
+		String greeting = spelParser.parseExpression(
+				"#random.nextInt(100) % 2 == 0 ? 'par' : 'impar'").getValue(springContext, String.class);
 
 		Assert.assertNotNull(greeting);
 
@@ -56,15 +57,15 @@ public class TernaryElvisAndSelfNavigationOperatorsExpressionsTest_8 {
 
 		log.info("elvisOperatorExpressionsTest -------------------");
 
-		springContext.setVariable("name", "Ivan García");
+		springContext.setVariable("name", "Ivan GarcÃ­a");
 
-		// define una expresión con operador elvis que verifique si es nula la variable 'name'
+		// define una expresiÃ³n con operador elvis que verifique si es nula la variable 'name'
 		// si es nula imprimir 'Without me'
-		String name = spelParser.parseExpression(null).getValue(springContext, String.class);
+		String name = spelParser.parseExpression("#name ?: 'Without me' ").getValue(springContext, String.class);
 		
 		Assert.assertNotNull(name);
 		
-		Assert.assertEquals("Ivan García", name);
+		Assert.assertEquals("Ivan GarcÃ­a", name);
 		
 		log.info("name: {}", name);
 
@@ -72,18 +73,18 @@ public class TernaryElvisAndSelfNavigationOperatorsExpressionsTest_8 {
 
 		spelParser.parseExpression("#name").setValue(springContext, null);
 
-		// define la misma expresión anterior y comprueba el resultado
-		name = spelParser.parseExpression(null).getValue(springContext, String.class);
+		// define la misma expresiÃ³n anterior y comprueba el resultado
+		name = spelParser.parseExpression("#name ?: 'Without me'").getValue(springContext, String.class);
 		
 		Assert.assertNotNull(name);
 		
-		Assert.assertEquals("Without name", name);
+		Assert.assertEquals("Without me", name);
 		
 		log.info("name: {}", name);
 		
 		// -------------------------------------
 
-		name = spelParser.parseExpression("#name").getValue(springContext, String.class); // sólo analiza
+		name = spelParser.parseExpression("#name").getValue(springContext, String.class); // sï¿½lo analiza
 		
 		Assert.assertNull(name);
 		
@@ -91,7 +92,7 @@ public class TernaryElvisAndSelfNavigationOperatorsExpressionsTest_8 {
 		
 		// -------------------------------------
 
-		name = spelParser.parseExpression("#name2").getValue(springContext, String.class); // sólo analiza
+		name = spelParser.parseExpression("#name2").getValue(springContext, String.class); // sï¿½lo analiza
 		
 		Assert.assertNull(name);
 		
@@ -103,10 +104,10 @@ public class TernaryElvisAndSelfNavigationOperatorsExpressionsTest_8 {
 
 		log.info("selfNavigationOperatorExpressionsTest2 -------------------");
 
-		springContext.setVariable("name", "Ivan García");
+		springContext.setVariable("name", "Ivan GarcÃ­a");
 
-		// define una expresión con operador 'self-navigation' que obtenga un substring que devuelva el valor 'Ivan'
-		String name = spelParser.parseExpression(null).getValue(springContext, String.class);
+		// define una expresiÃ³n con operador 'self-navigation' que obtenga un substring que devuelva el valor 'Ivan'
+		String name = spelParser.parseExpression("#name?.substring(0, 4)").getValue(springContext, String.class);
 		
 		Assert.assertNotNull(name);
 		
@@ -118,8 +119,8 @@ public class TernaryElvisAndSelfNavigationOperatorsExpressionsTest_8 {
 
 		spelParser.parseExpression("#name").setValue(springContext, null);
 
-		// define la misma expresión anterior y comprueba el resultado
-		name = spelParser.parseExpression(null).getValue(springContext, String.class);
+		// define la misma expresiÃ³n anterior y comprueba el resultado
+		name = spelParser.parseExpression("#name?.substring(0, 4)").getValue(springContext, String.class);
 		
 		Assert.assertNull(name);
 		
@@ -128,7 +129,7 @@ public class TernaryElvisAndSelfNavigationOperatorsExpressionsTest_8 {
 		// -------------------------------------
 
 		name = spelParser.parseExpression("#name.substring(0,4)")
-				.getValue(springContext, String.class); // sólo analiza
+				.getValue(springContext, String.class); // sÃ³lo analiza
 
 		Assert.fail();
 	}
