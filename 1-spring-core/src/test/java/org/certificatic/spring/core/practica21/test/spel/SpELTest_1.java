@@ -27,7 +27,7 @@ public class SpELTest_1 {
 	@Autowired
 	private Magician magician;
 
-	@Value("#{systemProperties}")
+	@Value("#{ systemProperties }")
 	private Properties properties;
 
 	@Before

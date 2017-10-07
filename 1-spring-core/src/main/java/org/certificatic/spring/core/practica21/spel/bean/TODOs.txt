@@ -2,10 +2,6 @@ TODO 1.
 Analizar clases POJO GuessNumber y Magician
 
 
-TODO 2.
-Analizar TEST ResourceClassPathXmlApplicationContextTest (ojo revisar carpeta copy-classpath)
-
-
 TODO 3.
 Definir bean GuessNumber y Magician en \spring\practica21\spel-application-context.xml
 
@@ -25,7 +21,7 @@ Analizar y completar TEST LiteralExpressionsTest_2
 
 
 TODO 6.
-Analizar clases POJO Inventor, PlaceOfBirth, Society y SocietyStub (esta última esta en el paquete test)
+Analizar clases POJO Inventor, PlaceOfBirth, Society y SocietyStub (esta ultima esta en el paquete test)
 
 
 TODO 7.
@@ -61,7 +57,7 @@ Analizar clase POJO Chicharronera y MyBeanResolver.
 
 
 TODO 12.
-Analizar clase de configuración ApplicationConfig.
+Analizar clase de configuraciï¿½n ApplicationConfig.
 
 
 TODO 13. 
