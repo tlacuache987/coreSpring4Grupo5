@@ -16,7 +16,14 @@
 		resource="classpath:/spring/practica25/datasource-application-context.xml" />
 
 	<!-- Define Bean JdbcTemplate -->
+	<bean class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="datasource" />
+	</bean>
 
 	<!-- Define Bean NamedParameterJdbcTemplate -->
+	<bean
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+		<constructor-arg name="dataSource" ref="datasource" />
+	</bean>
 
 </beans>
