@@ -38,41 +38,41 @@ public class PartidoSpringAopXmlTest {
 
 		log.info("------------");
 
-		/*try {
+		try {
 			jugador.cobrarPenal(true);
 		} catch (Throwable e) {
 			log.info("excepción: " + e.getMessage());
-		
+
 		}
 		log.info("------------");
-		
+
 		try {
 			jugador.cobrarPenal(false);
 		} catch (Throwable e) {
 			log.info("excepción: " + e.getMessage());
 		}
 		log.info("------------");
-		
+
 		jugador.cometerFalta();
-		
+
 		log.info("------------");
-		
+
 		try {
 			jugador.tirarAGol(false);
-		
+
 		} catch (Throwable e) {
 			log.info("excepción: " + e.getMessage());
 		}
 		log.info("------------");
-		
+
 		try {
 			jugador.tirarAGol(true);
 		} catch (Throwable e) {
 			log.info("excepción: " + e.getMessage());
 		}
 		log.info("------------");
-		
-		jugador.esExpulsado();*/
+
+		jugador.esExpulsado();
 	}
 
 }

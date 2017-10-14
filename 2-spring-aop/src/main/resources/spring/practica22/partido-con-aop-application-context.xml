@@ -14,14 +14,83 @@
 
 		<aop:aspect id="audienciaAspecto" ref="audienciaBean">
 
+			<!-- definicion de pointcuts -->
+
 			<aop:pointcut id="cuandoUnJugadorEjecutaUnPase"
-				expression="execution( * org.certificatic.spring.aop..api.IJugador.ejecutarPase(..) )" />
+				expression="execution( * org.certificatic..api.IJugador.ejecutarPase() )" />
+
+			<aop:pointcut id="cuandoUnJugadorCobraUnPenal"
+				expression="execution( * org.certificatic..api.IJugador.cobrarPenal(..) )" />
+
+			<aop:pointcut id="cuandoUnJugadorCometeUnaFalta"
+				expression="execution( * org.certificatic..api.IJugador.cometerFalta(..) )" />
+
+			<aop:pointcut id="cuandoUnJugadorTiraAGol"
+				expression="execution( * org.certificatic..api.IJugador.tirarAGol(*) )" />
+
+			<aop:pointcut id="cuandoUnJugadorEsExpulsado"
+				expression="execution( * org.certificatic..api.IJugador.esExpulsado() )" />
+
+			<!-- advices cuando un jugador ejecuta un pase -->
 
 			<aop:before pointcut-ref="cuandoUnJugadorEjecutaUnPase"
 				method="gritaOle" />
 
 			<aop:after pointcut-ref="cuandoUnJugadorEjecutaUnPase"
 				method="gritaOle" />
+
+			<!-- advices cuando un jugador cobra un penal -->
+
+			<aop:before pointcut-ref="cuandoUnJugadorCobraUnPenal"
+				method="sePoneDePie" />
+
+			<aop:after-returning pointcut-ref="cuandoUnJugadorCobraUnPenal"
+				method="gritaGol" />
+
+			<aop:after-throwing pointcut-ref="cuandoUnJugadorCobraUnPenal"
+				method="abuchear" />
+
+			<aop:after-throwing pointcut-ref="cuandoUnJugadorCobraUnPenal"
+				method="abuchear" />
+
+			<aop:after pointcut-ref="cuandoUnJugadorCobraUnPenal"
+				method="seSienta" />
+
+			<!-- advices cuando un jugador comete una falta -->
+
+			<aop:after pointcut-ref="cuandoUnJugadorCometeUnaFalta"
+				method="abuchear" />
+
+			<!-- advices cuando un jugador tira a gol -->
+
+			<aop:after-returning pointcut-ref="cuandoUnJugadorTiraAGol"
+				method="gritaGol" />
+
+			<aop:after-returning pointcut-ref="cuandoUnJugadorTiraAGol"
+				method="gritaGol" />
+
+			<aop:after-returning pointcut-ref="cuandoUnJugadorTiraAGol"
+				method="aplaudir" />
+
+			<aop:after-returning pointcut-ref="cuandoUnJugadorTiraAGol"
+				method="aplaudir" />
+
+			<!-- advices cuando un jugador es expulsado -->
+			<!-- 
+			<aop:after pointcut-ref="cuandoUnJugadorEsExpulsado"
+				method="abuchear" />
+
+			<aop:after pointcut-ref="cuandoUnJugadorEsExpulsado"
+				method="abuchear" />
+
+			<aop:after pointcut-ref="cuandoUnJugadorEsExpulsado"
+				method="aplaudir" />
+
+			<aop:after pointcut-ref="cuandoUnJugadorEsExpulsado"
+				method="aplaudir" />
+			-->
+			<aop:around pointcut-ref="cuandoUnJugadorEsExpulsado" 
+				method="sePoneDeNervios" />
 
 
 		</aop:aspect>

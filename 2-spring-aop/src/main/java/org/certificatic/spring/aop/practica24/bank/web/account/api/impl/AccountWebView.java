@@ -19,9 +19,9 @@ public class AccountWebView implements IAccountWebView {
 
 	@Override
 	public void showAccountsFromCustomerId(Long customerId) {
-		log.info(
+		/*log.info(
 				"Inside accountWebView.showAccountsFromCustomerId(). Showing accounts for customer: {}",
-				customerId);
+				customerId);*/
 
 		List<Account> accountList = accountService
 				.findCustomerAccounts(customerId);
@@ -31,19 +31,19 @@ public class AccountWebView implements IAccountWebView {
 
 	@Override
 	public void processFormUpdateBalance(Account account, Long amount) {
-		log.info(
+		/*log.info(
 				"Inside accountWebView.processFormUpdateBalance(). Account: {}, ammount: {}",
 				account.getAccountNumber(),
-				amount);
+				amount);*/
 
 		accountService.updateAccountBalance(account, amount);
 	}
 
 	@Override
 	public void processFormUpdateDescription(Account account) {
-		log.info(
+		/*log.info(
 				"Inside accountWebView.processFormUpdateDescription(). Updating account [{}] description to: {}",
-				account.getAccountNumber(), account.getAccountDescription());
+				account.getAccountNumber(), account.getAccountDescription());*/
 
 		accountService.updateAccountDescription(account);
 	}

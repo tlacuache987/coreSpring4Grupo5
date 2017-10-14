@@ -64,12 +64,16 @@ public class Audiencia implements IAudiencia {
 		print(colorWriter.getColoredMessage(Color.CYAN,
 				"[Aspecto Audiencia] El público se pone de nervios"));
 
-		Object o = null;
+		Object o = pjp.proceed();
 
 		// Implementa mútodo "se pone de nervios"
+		this.abuchear();
+		this.abuchear();
+		this.aplaudir();
+		this.aplaudir();
 
 		print(colorWriter.getColoredMessage(Color.CYAN,
-				"[Aspecto Audiencia] El público se deja de pone de nervios"));
+				"[Aspecto Audiencia] El público se deja de poner de nervios"));
 
 		return o;
 	}
