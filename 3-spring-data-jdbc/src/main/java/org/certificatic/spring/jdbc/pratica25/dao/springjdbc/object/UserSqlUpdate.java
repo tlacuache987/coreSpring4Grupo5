@@ -4,12 +4,13 @@ import java.sql.Types;
 
 import javax.sql.DataSource;
 
+import org.certificatic.spring.jdbc.pratica25.domain.entities.User;
 import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.object.SqlUpdate;
 
 public class UserSqlUpdate extends SqlUpdate {
 
-	private static final String UPDATE = "UPDATE SPRING_DATA_USER_TBL SET USERNAME = ?, PASSWORD = ? WHERE USER_ID = ?";
+	private static final String UPDATE = "UPDATE USER_TBL SET USERNAME = ?, PASSWORD = ? WHERE USER_ID = ?";
 
 	public UserSqlUpdate(DataSource dataSource) {
 
@@ -23,6 +24,10 @@ public class UserSqlUpdate extends SqlUpdate {
 
 	public int execute(Long id, String username, String password) {
 		return update(username, password, id);
+	}
+
+	public int execute(User user) {
+		return update(user.getUsername(), user.getPassword(), user.getId());
 	}
 
 }
