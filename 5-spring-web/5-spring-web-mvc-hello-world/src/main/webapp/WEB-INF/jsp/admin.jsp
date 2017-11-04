@@ -7,6 +7,6 @@
 </head>
 <body>
 	<h1>Admin</h1>
-	<h2>Hi ${message}</h2>
+	<h2>${message}</h2>
 </body>
 </html>
