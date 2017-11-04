@@ -15,11 +15,25 @@
 	<import
 		resource="classpath:/spring/practica27/datasource-application-context.xml" />
 
-	<!-- Define sessionFactory - LocalSessionFactoryBean -->
-
 	<!-- Define TransactionManager - HibernateTransactionManager -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 
 	<!-- Define transaccionabilidad dirigida por anotaciones -->
-
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- Define sessionFactory - LocalSessionFactoryBean -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="datasource" />
+		<property name="packagesToScan" value="org.certificatic.spring.orm.domain.entities" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
+				<prop key="dialect">org.hibernate.dialect.H2Dialect</prop>
+			</props>
+		</property>
+	</bean>
 
 </beans>

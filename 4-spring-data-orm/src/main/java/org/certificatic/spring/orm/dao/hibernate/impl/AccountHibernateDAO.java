@@ -5,8 +5,12 @@ import java.util.List;
 import org.certificatic.spring.orm.dao.api.IAccountDAO;
 import org.certificatic.spring.orm.dao.hibernate.GenericHibernateDAO;
 import org.certificatic.spring.orm.domain.entities.Account;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 // Habilitar bean Repository 
+@Repository
 public class AccountHibernateDAO extends GenericHibernateDAO<Account, Long>
 		implements IAccountDAO {
 
@@ -15,13 +19,15 @@ public class AccountHibernateDAO extends GenericHibernateDAO<Account, Long>
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public List<Account> findByCustomerId(Long id) {
+		Session session = this.sessionFactory.getCurrentSession();
 
-		return (List<Account>) this.sessionFactory.getCurrentSession()
-				.createQuery("FROM " + this.persistentClass.getName()
-						+ " WHERE customer = " + id)
-				.list();
+		Query query = session.createQuery("FROM " + this.persistentClass.getName() +
+				" WHERE customer = " + id);
+
+		@SuppressWarnings("unchecked")
+		List<Account> list = (List<Account>) query.list();
+
+		return list;
 	}
-
 }
