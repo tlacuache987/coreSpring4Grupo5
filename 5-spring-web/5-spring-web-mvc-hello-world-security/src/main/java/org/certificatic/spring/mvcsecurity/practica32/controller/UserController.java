@@ -29,7 +29,8 @@ public class UserController {
 	private IDataService userDataService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String showUserPage(Model model, @RequestParam(value = "callmethod", required = false) String callmethod) {
+	public String showUserPage(Model model,
+			@RequestParam(value = "callmethod", required = false) String callmethod) {
 
 		log.info("show user page ------------------");
 
